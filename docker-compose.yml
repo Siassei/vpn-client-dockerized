@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  vpnc:
+    build:
+      context: .
+
+    privileged: true
+
+    cap_add:
+      - ALL
+    cap_drop:
+      - NET_ADMIN
+      - SYS_ADMIN
+
+    env_file:
+      - scripts/example_script.env
+
+    entrypoint:
+      - /entrypoint.sh
+      - /example_script.sh
